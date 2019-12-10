@@ -26,6 +26,43 @@
           </el-menu>
         </div>
       </div>
+      <div class="app-left">
+        <el-menu
+            default-active="2"
+            class="el-menu-vertical-demo"
+            @open="handleOpen"
+            @close="handleClose"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>导航一</span>
+            </template>
+            <el-menu-item-group>
+              <template slot="title">分组一</template>
+              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="1-2">选项2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="1-3">选项3</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="1-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="1-4-1">选项1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+          <el-menu-item index="3">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航三</span>
+          </el-menu-item>
+        </el-menu>
+      </div>
       <div class="app-router-view">
         <div v-loading="rightContentLoading">
           <router-view></router-view>
@@ -104,25 +141,16 @@
   }
 </script>
 <style>
-  .app-content .ps {
-    overflow: inherit !important;
+  .app-left {
+    width: 210px;
+    float: left;
+    margin-top: 42px;
+    overflow: hidden;
   }
-
-  .horizontal-collapse-transition,
-  .app-content .el-menu {
-    transition: unset !important;
-    animation: unset !important;
+  .app-router-view {
+    padding-left: 200px;
+    box-sizing: border-box;
   }
-
-  .horizontal-collapse-transition .el-submenu__title .el-submenu__icon-arrow {
-    transition: unset !important;
-    opacity: 1 !important;
-  }
-
-  .app-content .single-menu-item {
-    background-color: #424c5c;
-  }
-
   .app-topbar .app-username {
     padding-left: 36px;
   }
@@ -130,209 +158,6 @@
   .app-topbar .app-username-girl {
     background: #3c4043 url('../assets/image/login-boy.jpg') no-repeat left center;
     background-size: 32px 32px;
-  }
-
-  .app-content .attr-container-comment-style.small-left {
-    padding-left: 50px !important;
-  }
-
-  .app-leftbar .el-icon-arrow-right:before {
-    content: "";
-  }
-
-  .el-submenu__title {
-    background-color: #424c5c;
-  }
-
-  .el-submenu-two .el-submenu__title {
-    background-color: #333a45;
-  }
-
-  .app-content .el-menu {
-    background-color: #424c5c;
-    padding: 0;
-  }
-
-  .el-submenu-one .el-submenu__title .el-submenu__icon-arrow,
-  .el-submenu-one .el-submenu__title .el-icon-arrow-down {
-    width: 5px;
-    height: 7px;
-    left: 165px;
-    background: url("../assets/image/left-menu-arrow.png") no-repeat;
-  }
-
-  .el-submenu-two .el-submenu__title .el-submenu__icon-arrow,
-  .el-submenu-two .el-submenu__title .el-icon-arrow-down {
-    background: url("../assets/image/left-menu-arrow.png") no-repeat;
-  }
-
-  .el-icon-arrow-down:before {
-    content: '';
-  }
-
-
-  .el-menu-item > i,
-  .el-submenu__title > i,
-  .el-submenu__title > span,
-  .el-menu-item > span {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 14px;
-  }
-  .app-content .el-submenu-two .el-submenu__title {
-    color: #fff;
-  }
-
-  .app-content .el-submenu-one .el-menu-item,
-  .app-content .el-submenu-two .el-menu-item {
-    color: #b6bbce;
-    min-width: initial;
-  }
-
-  .el-menu-item > i {
-    left: 20px;
-  }
-
-  .collapse .el-submenu__title > i {
-    left: 20px;
-  }
-
-  .el-submenu__title > span,
-  .el-menu-item > span {
-    left: 40px;
-  }
-
-  .app-content .menu-toggle-icon {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    background: url("../assets/image/menu-toggle-icon.png") no-repeat center;
-  }
-
-  .app-content .menu-toggle-icon:hover {
-    background: url("../assets/image/menu-toggle-icon-hover.png") no-repeat center;
-  }
-
-  .app-content .el-menu--collapse .menu-toggle-icon {
-    background: url("../assets/image/menu-toggle-icon-simple.png") no-repeat center;
-  }
-
-  .app-content .el-menu--collapse .menu-toggle-icon:hover {
-    background: url("../assets/image/menu-toggle-icon-simple-hover.png") no-repeat center;
-  }
-
-  .app-content {
-    height: 100%;
-    position: relative;
-  }
-
-  .app-content .left-nav {
-    width: 184px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-
-  .app-content .left-nav.small-nav {
-    width: 50px;
-  }
-
-  .app-content .el-menu .menu-toggle i {
-    color: #aeb8bf;
-    font-size: 9px;
-    font-style: normal;
-    cursor: pointer;
-  }
-
-  .app-content .el-menu-item i {
-    display: inline-block;
-    width: 8px;
-    height: 12px;
-  }
-
-  .app-content .el-menu-item .el-tooltip {
-    text-align: center;
-  }
-
-  .app-content .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 184px;
-  }
-
-  .app-content .el-menu-vertical-demo:not(.el-menu--collapse), .el-menu--collapse {
-    height: 100%;
-    border: 0;
-    box-sizing: border-box;
-  }
-
-  .app-content .menu-toggle {
-    height: 30px;
-    position: absolute;
-    background-color: #4b5462;
-    top: 42px;
-    width: 100%;
-    z-index: 999;
-    cursor: pointer;
-  }
-
-  .el-menu--collapse li .el-submenu__title .fa,
-  .app-content .menu-toggle i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .app-content .right-content {
-    width: 100%;
-    height: 100%;
-  }
-
-  .app-content .right-content-left-big {
-    padding-left: 184px;
-    box-sizing: border-box;
-    padding-top: 42px;
-    background: #fff;
-  }
-
-  .app-content .right-content-left-small {
-    padding-left: 50px;
-    box-sizing: border-box;
-    padding-top: 42px;
-  }
-
-  .app-content .right-content-left-none {
-    padding-left: 0;
-  }
-
-  .app-content .el-menu-item,
-  .app-content .el-submenu__title {
-    height: 34px;
-    line-height: 34px;
-    font-size: 12px;
-    color: #e7e9f1;
-  }
-
-  .app-content .el-submenu-two .el-menu-item {
-    height: 32px;
-    line-height: 32px;
-  }
-
-  .app-content .el-menu-item {
-    padding-left: 52px !important;
-  }
-
-  .el-menu-item:hover {
-    background-color: #495a75;
-  }
-
-  .app-content .menu-icon-collapse {
-    display: inline-block;
-    height: 100%;
-    width: 20px;
-    background: url("../assets/image/character-icon.png") no-repeat center;
   }
 
   .app-topbar .app-loginout-pwd {
@@ -416,13 +241,6 @@
     color: #d1d1d1;
   }
 
-  .user-icon {
-    height: 14px;
-    width: 1px;
-    display: inline-block;
-    margin-right: 10px;
-  }
-
   .app-topbar {
     width: 100%;
     height: 42px;
@@ -431,10 +249,6 @@
     top: 0;
     z-index: 9999;
     min-width: 1280px;
-  }
-
-  .el-menu {
-    background-color: #333;
   }
 
   .app-topbar .app-logo {
@@ -460,39 +274,6 @@
     height: 42px;
     line-height: 42px;
     overflow: hidden;
-  }
-
-  .el-menu-item,
-  .el-submenu__title {
-    color: #e7e7e7;
-    padding: 0 14px;
-  }
-
-  .el-submenu__title {
-    padding: 0 !important;
-  }
-
-  .el-menu--horizontal .el-submenu.is-opened .el-submenu__icon-arrow {
-    margin-top: 0;
-  }
-
-  .el-menu--horizontal .el-submenu .el-submenu__icon-arrow {
-    color: #e7e7e7;
-    margin-top: 10px;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: url("../assets/image/select-arrow.png") no-repeat;
-  }
-
-  .el-menu--horizontal > .el-menu-item:hover, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title, .el-menu--horizontal > .el-submenu:hover .el-submenu__title, .el-menu--horizontal .el-menu-item {
-    border: none;
-  }
-
-  .el-menu--horizontal .el-submenu .el-submenu__title:hover,
-  .el-submenu .el-submenu__title:hover,
-  .el-submenu .el-menu-item:hover {
-    background-color: #495a75;
   }
 
   .app-topbar .app-menu .el-menu-item.is-active, .app-topbar .app-menu .el-menu-item.is-active:hover {
@@ -587,92 +368,6 @@
     background: url("../assets/image/logout-active.png") no-repeat left center;
   }
 
-  .app-submenu {
-    height: 100%;
-    border-radius: 0px !important;
-  }
-
-  .is-opened > .el-submenu__title > .el-icon-arrow-down {
-    margin-top: -4px;
-  }
-
-  .app-content {
-    float: right;
-    width: 100%;
-    height: 100%;
-  }
-
-  .app-router-view {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: #f3f2f2;
-    overflow: hidden;
-    padding-top: 42px;
-  }
-
-  .app-router-view > div {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-  }
-
-  .small-left-meau-style .app-router-view {
-    padding-left: 50px;
-  }
-
-  .el-menu--collapse .el-menu .el-submenu {
-    min-width: inherit;
-  }
-
-  .app-content .collapse .el-menu-item {
-    padding: 0 15px !important;
-  }
-
-  .collapse .el-submenu-two .el-submenu__title {
-    padding: 0 15px !important;
-  }
-
-  .collapse .el-submenu-two .el-submenu__title .el-submenu__icon-arrow,
-  .collapse .el-submenu-two .el-submenu__title .el-icon-arrow-down {
-    left: auto;
-    right: 4px;
-    position: absolute;
-    transform: translateY(-50%) !important;
-  }
-
-  .app-leftbar {
-    height: 100%;
-    padding-top: 72px;
-    width: 184px;
-    position: absolute;
-    z-index: 998;
-    box-sizing: border-box;
-  }
-
-  .app-leftbar .menu-list {
-    height: 100%;
-    width: 100%;
-    background-color: #424c5c;
-    position: relative;
-  }
-
-  .app-leftbar.collapse {
-    width: 50px;
-  }
-
-  .el-menu--collapse {
-    width: 50px;
-  }
-
-  .el-form-item__content .el-form-item__error {
-    padding-left: 0%;
-  }
-
-  .el-pagination {
-    margin-top: 10px;
-    float: right;
-  }
-
   .app-topbar .app-user .el-submenu__title {
     background: #3c4043;
     color: #f0f0f0;
@@ -688,11 +383,6 @@
 
   .el-menu--horizontal .el-submenu:focus > .el-submenu__title {
     color: #f0f0f0;
-  }
-
-  .el-menu--horizontal .el-submenu .el-submenu__icon-arrow {
-    margin-left: 20px;
-    margin-right: 12px;
   }
 
 </style>
