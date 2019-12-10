@@ -4,7 +4,7 @@
       <!--顶部导航-->
       <div class="app-topbar">
         <div class="app-logo">吃饭睡觉打豆豆</div>
-        <div class="app-config" v-on:click.stop="stopDivPropagation">
+        <div class="app-config" v-on:click.stop>
           <el-menu theme="light" class="app-user" mode="horizontal" menu-trigger="click" ref="appUserMenu">
             <el-submenu index="1" :popper-append-to-body="false">
               <template slot="title">
@@ -28,38 +28,18 @@
       </div>
       <div class="app-left">
         <el-menu
-            default-active="2"
+            default-active="1"
             class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b">
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>导航一</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item
+              v-for="(item,index) in menus"
+              :key="index"
+              :index="item.menuId"
+              @click="routerChange(item.menuUrl)">
             <i class="el-icon-setting"></i>
-            <span slot="title">导航三</span>
+            <span>{{item.menuName}}</span>
           </el-menu-item>
         </el-menu>
       </div>
@@ -73,7 +53,6 @@
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import {doLoginOut} from '../server/system'
 
   export default {
     data() {
@@ -88,7 +67,7 @@
     },
     mounted() {
       this.getUserInfo();
-      this.menuSelect('0');
+      this.$router.push(this.menus[0].menuUrl);
     },
     watch: {
       '$route'(to, from) {
@@ -99,15 +78,6 @@
             this.rightContentLoading = false;
           })
         }
-      },
-      menus: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (newVal.length) {
-            this.menuSelect('0');
-          }
-        },
-        deep: true
       }
     },
     methods: {
@@ -123,13 +93,18 @@
           sessionStorage.clear()
         });
       },
-      stopDivPropagation(){
+      stopDivPropagation() {
 
       },
-      /*初始化菜单*/
-      menuSelect: function (index) {
-        console.log(this.menus);
-        this.$router.push(this.menus[index].menuUrl);
+      /*路由改变*/
+      routerChange(path) {
+        if (this.$route.path == path.split('?')[0]) {
+          this.rightContentLoading = true;
+          this.routerPath = path;
+          this.$router.push('/');
+          return;
+        }
+        this.$router.push(path);
       },
       bodyClick() {
         if (this.$refs['appUserMenu']) {
@@ -147,10 +122,12 @@
     margin-top: 42px;
     overflow: hidden;
   }
+
   .app-router-view {
     padding-left: 200px;
     box-sizing: border-box;
   }
+
   .app-topbar .app-username {
     padding-left: 36px;
   }
