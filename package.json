@@ -1,0 +1,41 @@
+{
+  "name": "self-bigapple",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "cross-env NODE_ENV=serve vue-cli-service serve",
+    "build-dev": "cross-env NODE_ENV=dev vue-cli-service build",
+    "build-preProduct": "cross-env NODE_ENV=preProduct vue-cli-service build",
+    "build-product": "cross-env NODE_ENV=product vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.7.2",
+    "font-awesome": "^4.7.0",
+    "js-md5": "^0.7.3",
+    "lodash": "^4.17.11",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "cross-env": "^5.2.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.17",
+    "ztree": "^3.5.24"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

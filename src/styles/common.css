@@ -1,0 +1,32 @@
+/*表格操作列按钮*/
+.table-operation-btns {
+  display: inline-block;
+  cursor: pointer;
+  color: darkorange;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.table-operation-btns:hover {
+  color: darkorange;
+}
+
+/*必填符*/
+.must-input-sub-icon:before {
+  content: "*";
+  color: #f56c6c;
+  margin-right: 4px;
+  vertical-align: sub;
+}
+
+/*超出隐藏...*/
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table .el-radio {
+  margin-left: -1px;
+}
+
