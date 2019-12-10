@@ -14,7 +14,7 @@ const actions = {
           "menus": [
             {
               "menuName": "一",
-              "menuUrl": "/a",
+              "menuUrl": "/tool-demo/antv-g6-demo",
               "menuIcon": "fa fa-id-badge",
               "id": "1",
               "menuId": "1",

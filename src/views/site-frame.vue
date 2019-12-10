@@ -93,10 +93,6 @@
           sessionStorage.clear()
         });
       },
-      stopDivPropagation() {
-
-      },
-      /*路由改变*/
       routerChange(path) {
         if (this.$route.path == path.split('?')[0]) {
           this.rightContentLoading = true;

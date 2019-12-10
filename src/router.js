@@ -24,6 +24,12 @@ export default new Router({
           name: 'page-one',
           component:()=>import(/*webpackChunkName: "page-one" */'./views/page-one/index.vue'),
         },
+        /*antv-g6-demo*/
+        {
+          path: '/tool-demo/antv-g6-demo',
+          name: 'antv-g6-demo',
+          component:()=>import(/*webpackChunkName: "antv-g6-demo" */'./views/tool-demo/antv-g6-demo.vue'),
+        },
         {
           path: '/',
           name: 'null',
