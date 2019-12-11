@@ -32,6 +32,13 @@ const actions = {
               "menuIcon": "fa fa-twitch",
               "id": "3",
               "menuId": "3",
+            },
+            {
+              "menuName": "四",
+              "menuUrl": "/vue-demo",
+              "menuIcon": "fa fa-twitch",
+              "id": "4",
+              "menuId": "4",
             }
           ]
         },

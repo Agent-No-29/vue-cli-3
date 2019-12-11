@@ -112,15 +112,21 @@
   }
 </script>
 <style>
+  .app-content {
+    height: 100%;
+  }
+  .app-router-view {
+    height: calc(100% - 42px);
+    margin-top: 42px;
+  }
   .app-left {
     width: 210px;
     float: left;
-    margin-top: 42px;
     overflow: hidden;
   }
 
   .app-router-view {
-    padding-left: 200px;
+    padding-left: 210px;
     box-sizing: border-box;
   }
 

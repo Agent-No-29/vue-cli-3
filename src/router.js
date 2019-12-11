@@ -30,6 +30,12 @@ export default new Router({
           name: 'antv-g6-demo',
           component:()=>import(/*webpackChunkName: "antv-g6-demo" */'./views/tool-demo/antv-g6-demo.vue'),
         },
+        /*vue-demo*/
+        {
+          path: '/vue-demo',
+          name: 'vue-demo',
+          component:()=>import(/*webpackChunkName: "vue-demo" */'./views/vue-demo/index.vue'),
+        },
         {
           path: '/',
           name: 'null',
