@@ -9,7 +9,7 @@
     "build-product": "cross-env NODE_ENV=product vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "element-ui": "^2.7.2",
     "font-awesome": "^4.7.0",
     "js-md5": "^0.7.3",
