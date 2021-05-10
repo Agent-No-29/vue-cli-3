@@ -13,7 +13,7 @@
     "element-ui": "^2.7.2",
     "font-awesome": "^4.7.0",
     "js-md5": "^0.7.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
